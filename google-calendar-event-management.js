@@ -43,7 +43,6 @@ function updateGoogleEvent (event, actionNetworkID, googleID) {
   }
 
   const eventGoogle = CalendarApp.getCalendarById(scriptProperties.getProperty('GCAL_ID')).getEventById(googleID)
-
   if (!eventGoogle) {
     console.info(`Google Calendar event ${googleID} not found.`)
     return
@@ -64,9 +63,7 @@ function updateGoogleEvent (event, actionNetworkID, googleID) {
   const eventDescription = calDescription(event)
   if (eventGoogle.getDescription() !== eventDescription) {
     console.info(`Updating description of event ${eventName} from Action Network at ${actionNetworkID}.`)
-    eventGoogle.setDescription(eventDescription)
   }
-
   const startTime = getStartTime(event)
   const endTime = getEndTime(event)
   eventGoogle.setTime(startTime, endTime)
